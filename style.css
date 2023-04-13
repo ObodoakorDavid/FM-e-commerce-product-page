@@ -469,11 +469,6 @@ main {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.carousel-modal.popup {
-  display: block;
-  /* background-size: 100% 100% */
-}
-
 /* ============== Media Queries ============= */
 
 @media (min-width: 992px) {
@@ -556,5 +551,9 @@ main {
   .previous-icon,
   .next-icon {
     display: none;
+  }
+
+  .carousel-modal.popup {
+    display: block;
   }
 }

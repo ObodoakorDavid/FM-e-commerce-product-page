@@ -72,23 +72,55 @@ nextIcon.addEventListener("click", () => {
   currentIndex++;
   if (currentIndex > 4) {
     currentIndex = 1;
-    mainImage.setAttribute("src", `./images/image-product-${currentIndex}.jpg`);
-  } else {
-    mainImage.setAttribute("src", `./images/image-product-${currentIndex}.jpg`);
   }
+  mainImage.setAttribute("src", `./images/image-product-${currentIndex}.jpg`);
 });
 
 previousIcon.addEventListener("click", () => {
   currentIndex--;
   if (currentIndex < 1) {
     currentIndex = 4;
-    mainImage.setAttribute("src", `./images/image-product-${currentIndex}.jpg`);
-  } else {
-    mainImage.setAttribute("src", `./images/image-product-${currentIndex}.jpg`);
   }
+  mainImage.setAttribute("src", `./images/image-product-${currentIndex}.jpg`);
+});
+
+allImages.forEach((image) => {
+  image.addEventListener("click", (e) => {
+    let clickedImagePath = e.target
+      .getAttribute("src")
+      .replace("-thumbnail", "");
+    currentIndex = Number(clickedImagePath.charAt(clickedImagePath.length - 5));
+    mainImage.setAttribute("src", clickedImagePath);
+    allImages.forEach((eachImage) => eachImage.classList.remove("active"));
+    image.classList.add("active");
+    UpdateCarouselState();
+  });
+});
+
+mainImage.addEventListener("click", () => {
+  carouselModal.classList.add("popup");
 });
 
 // ======== Carousel Modal ======
+
+function UpdateCarouselState() {
+  if (currentIndex < 1) {
+    currentIndex = 4;
+  } else if (currentIndex > 4) {
+    currentIndex = 1;
+  }
+  mainImageModal.setAttribute(
+    "src",
+    `./images/image-product-${currentIndex}.jpg`
+  );
+  allImagesModal.forEach((eachImage) => {
+    if (eachImage.getAttribute("value") == currentIndex) {
+      eachImage.classList.add("active");
+    } else {
+      eachImage.classList.remove("active");
+    }
+  });
+}
 
 carouselModalClose.addEventListener("click", () => {
   carouselModal.classList.remove("popup");
@@ -96,38 +128,12 @@ carouselModalClose.addEventListener("click", () => {
 
 nextIconModal.addEventListener("click", () => {
   currentIndex++;
-  if (currentIndex > 4) {
-    currentIndex = 1;
-    mainImageModal.setAttribute(
-      "src",
-      `./images/image-product-${currentIndex}.jpg`
-    );
-    // allImages.forEach((eachImage) => eachImage.classList.remove("active"));
-  } else {
-    mainImageModal.setAttribute(
-      "src",
-      `./images/image-product-${currentIndex}.jpg`
-    );
-  }
-  // allImages.forEach((eachImage) => eachImage.classList.remove("active"));
+  UpdateCarouselState();
 });
 
 previousIconModal.addEventListener("click", () => {
   currentIndex--;
-  if (currentIndex < 1) {
-    currentIndex = 4;
-    mainImageModal.setAttribute(
-      "src",
-      `./images/image-product-${currentIndex}.jpg`
-    );
-    // allImages.forEach((eachImage) => eachImage.classList.remove("active"));
-  } else {
-    mainImageModal.setAttribute(
-      "src",
-      `./images/image-product-${currentIndex}.jpg`
-    );
-  }
-  // allImages.forEach((eachImage) => eachImage.classList.remove("active"));
+  UpdateCarouselState();
 });
 
 allImagesModal.forEach((image) => {
@@ -136,11 +142,8 @@ allImagesModal.forEach((image) => {
       .getAttribute("src")
       .replace("-thumbnail", "");
     mainImageModal.setAttribute("src", clickedImagePath);
-    carouselModal.classList.add("popup");
-    allImagesModal.forEach((eachImage) => eachImage.classList.remove("active"));
-    image.classList.add("active");
-    console.log(e.target.getAttribute("value"));
-    currentIndex = Number(e.target.getAttribute('value'));
+    currentIndex = Number(e.target.getAttribute("value"));
+    UpdateCarouselState();
   });
 });
 
