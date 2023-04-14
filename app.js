@@ -98,7 +98,10 @@ allImages.forEach((image) => {
 });
 
 mainImage.addEventListener("click", () => {
-  carouselModal.classList.add("popup");
+  UpdateCarouselState();
+  if (window.innerWidth > 991) {
+    carouselModal.classList.add("popup");
+  }
 });
 
 // ======== Carousel Modal ======

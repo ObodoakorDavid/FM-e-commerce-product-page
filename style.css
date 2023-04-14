@@ -488,7 +488,7 @@ main {
 
   .cart-modal {
     left: unset;
-    right: 10%;
+    right: 15%;
     box-shadow: 1px 2px 12px -6px gray;
   }
 
@@ -521,16 +521,16 @@ main {
     transform: scaleX(0);
     transform-origin: center;
     transition: 0.4s ease-in-out;
-    background-color: red;
+    background-color: var(--orange);
   }
-
+  
   nav ul li:hover::after {
     position: absolute;
     bottom: -130%;
     left: 0;
     padding: 2px;
     transform: scaleX(1);
-    background-color: red;
+    background-color: var(--orange);
   }
 
   nav > div:nth-of-type(1) {
