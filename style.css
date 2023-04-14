@@ -184,9 +184,7 @@ main {
   width: 100%;
 }
 
-.main-image {
-  cursor: pointer;
-}
+
 
 @media (min-width: 400px) {
   .main-image,
@@ -225,6 +223,7 @@ main {
   width: 40px;
   padding: 12px 14px;
   border-radius: 80px;
+  cursor: pointer;
 }
 
 .next-icon-modal {
@@ -235,6 +234,7 @@ main {
   width: 40px;
   padding: 12px 14px;
   border-radius: 80px;
+  cursor: pointer;
 }
 
 .images-thumbnails {
@@ -563,5 +563,9 @@ main {
 
   .carousel-modal.popup {
     display: block;
+  }
+
+  .main-image {
+    cursor: pointer;
   }
 }
