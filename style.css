@@ -94,6 +94,7 @@ nav > div:nth-of-type(2) img {
   gap: 4px;
   position: relative;
   z-index: 7;
+  cursor: pointer;
 }
 
 .hamburger span {
@@ -183,6 +184,10 @@ main {
   width: 100%;
 }
 
+.main-image {
+  cursor: pointer;
+}
+
 @media (min-width: 400px) {
   .main-image,
   .main-image-modal {
@@ -199,6 +204,7 @@ main {
   padding: 12px 14px;
   padding-right: 16px;
   border-radius: 80px;
+  cursor: pointer;
 }
 
 .next-icon {
@@ -209,6 +215,7 @@ main {
   width: 40px;
   padding: 12px 14px;
   border-radius: 80px;
+  cursor: pointer;
 }
 .previous-icon-modal {
   position: absolute;
@@ -251,6 +258,7 @@ main {
   border-radius: 8px;
   transition: 0.1s ease-in-out;
   border: 0px solid var(--orange);
+  cursor: pointer;
 }
 
 .images-thumbnails img:hover,
@@ -523,7 +531,7 @@ main {
     transition: 0.4s ease-in-out;
     background-color: var(--orange);
   }
-  
+
   nav ul li:hover::after {
     position: absolute;
     bottom: -130%;
